@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmquser
+      - RABBITMQ_DEFAULT_PASS=DEBmbwkSrzy9D1T9cJfa
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  altenhotel.client.angular:
+    image: altenhotel.client.angular
+    build: app-client
+    depends_on:
+      - rabbitmq
+    ports:
+      - "4200:80"
+
+  altenhotel.server.middleware:
+    image: ${DOCKER_REGISTRY-}altenhotel.server.middleware
+    build: app-server
+    depends_on:
+      - rabbitmq
+      - mongo
+    ports:
+      - "3100:3000"
+
+volumes:
+  rabbitmqdata:
+    external: true

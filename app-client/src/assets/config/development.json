@@ -1,0 +1,8 @@
+{
+    "debugging": false,
+  
+    "API_ENDPOINTS": {
+        "BASEURL": "http://localhost:3000/",
+        "USER": "api/v1/user"
+    }
+  }

@@ -1,0 +1,80 @@
+<div *ngIf="room">
+    <form id="roomForm" class="needs-validation" novalidate="">
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="roomNumber">Room Number</label>
+                    <input type="text" class="form-control" name="roomNumber" 
+                        [(ngModel)]="room.number" [ngModelOptions]="{standalone: true}"
+                        value="" required=""/>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="roomPrice">Room Price</label>
+                    <input type="text" class="form-control" name="roomPrice" 
+                        [(ngModel)]="room.price" [ngModelOptions]="{standalone: true}"
+                        placeholder="" value="" required=""/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="roomState">Room State</label>
+                    <select class="form-control mx-2 w-50 float-right" [(ngModel)]="room.state" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let s of roomStates" [value]="s.key">{{s.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="roomName">Room Type</label>
+                    <select class="form-control mx-2 w-50 float-right" [(ngModel)]="room.type" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let t of roomTypes" [value]="t.key">{{t.value}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="roomDescription">Room Description</label>
+                    <textarea name="roomDescription" rows="8" cols="80"
+                        class="form-control"
+                        [(ngModel)]="room.description" [ngModelOptions]="{standalone: true}"
+                        placeholder="" value="" required="">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h4>Reserved from:</h4>
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="startedDate">Started Date</label>
+                    <input type="date" name="startedDate" max="3000-12-31" min="1000-01-01" class="form-control"
+                        placeholder="" value="{{ room.reservedStartedDate | date:'yyyy-MM-dd' }}" disabled/>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="endDate">End Date</label>
+                    <input type="date" name="endDate" max="3000-12-31" min="1000-01-01" class="form-control"
+                        placeholder="" value="{{ room.reservedEndDate | date:'yyyy-MM-dd' }}" disabled/>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <app-packaging-room-grid
+                    [room]="room" 
+                    [packagingRooms$]="packagingRooms$">
+                </app-packaging-room-grid>
+            </div>
+        </div>  
+        -->      
+    </form>
+</div>

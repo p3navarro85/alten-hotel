@@ -1,0 +1,24 @@
+<div class="modal fade" id="newReservationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Reservation Info</h3>
+            <button type="button" #closeModal class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+           <app-admin-new-reservation-form
+            [reservation]="reservation"
+            [rooms]="rooms"></app-admin-new-reservation-form>   
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" 
+                (click)="cancelChanges($event)"
+                data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" 
+                (click)="saveChanges($event)">Save</button>
+        </div>
+        </div>
+    </div>
+</div>

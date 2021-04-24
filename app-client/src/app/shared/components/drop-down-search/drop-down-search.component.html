@@ -1,0 +1,18 @@
+<div class="form-group">
+    <div class="dropdown" style="width: 100%;">
+            <input type="text" class="form-control custom-select" style="width: 100%;"
+                placeholder="Search..."
+                [name]="name"
+                (focus)="getFocus()"
+                (focusout)="loseFocus($event)"
+                [(ngModel)]="searchCriteria"
+                [disabled]="disabled"
+                [required]="required"
+                [hidden]="hidden">
+        <div class="dropdown-content" [hidden]="showDropDown">
+            <a *ngFor="let option of items | async" 
+                (click)="selectItem(option)"
+                [hidden]="isAcceptedCriteria(option)"> {{ this.searchField.length > 0 ? option[this.searchField] : option.name }}</a>
+        </div>
+    </div>
+</div>

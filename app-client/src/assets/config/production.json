@@ -1,0 +1,8 @@
+{
+    "debugging": false,
+  
+    "API_ENDPOINTS": {
+        "BASEURL": "http://pcbkend.preferati.net/",
+        "USER": "api/v1/user"
+    }
+  }

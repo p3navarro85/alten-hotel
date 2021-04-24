@@ -1,0 +1,85 @@
+<div *ngIf="user">
+    <div class="row">
+        <div class="col-md-12">
+            <form id="userForm" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="firstName">First Name</label>
+                            <input type="text" class="form-control w-100" name="firstName" 
+                                [(ngModel)]="user.firstName" 
+                                [ngModelOptions]="{standalone: true}"
+                                placeholder="" value="" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="lastName">Last Name</label>
+                            <input type="text" class="form-control w-100" name="lastName" 
+                                [(ngModel)]="user.lastName" 
+                                [ngModelOptions]="{standalone: true}"
+                                placeholder="" value="" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="userEmail">Email</label>
+                            <input type="text" class="form-control w-100" name="userEmail" 
+                                [(ngModel)]="user.email" 
+                                [ngModelOptions]="{standalone: true}"
+                                placeholder="" value="" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="userPassword">Password</label>
+                            <input type="password" class="form-control w-100" name="userPassword" 
+                                [(ngModel)]="user.password" 
+                                [ngModelOptions]="{standalone: true}"
+                                placeholder="" value="" required/>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="confirmPassword">Confirm Password</label>
+                            <input type="text" class="form-control w-100" name="confirmPassword"
+                                placeholder="" value="" required/>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="userLevel">User Level</label>
+                            <select class="custom-select d-block w-100" name="userLevel"
+                                [(ngModel)]="user.userLevel"
+                                required>
+                                <option [ngValue]="-1" disabled>Choose...</option>
+                                <option>Manager</option>
+                                <!-- There will be more options after the MVP launch. -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mb-3">
+                        <div class="form-inline">   
+                            <label class="mr-2" for="userRole">Role</label>
+                            <select class="custom-select d-block w-100" name="userRole"
+                                [(ngModel)]="user.role"
+                                [ngModelOptions]="{standalone: true}"
+                                required>
+                                <option [ngValue]="-1" disabled>Choose...</option>
+                                <option>Sales</option>
+                                <option>Estimator</option>
+                                <option>Manager Jobs</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

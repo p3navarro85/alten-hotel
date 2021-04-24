@@ -1,0 +1,79 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary float-left">Manage Users</h6>
+        <button type="button" class="btn btn-primary btn-icon-split btn-sm float-right" 
+            (click)="createUser()">
+            <span class="icon text-white-50">
+                <i class="fas fa-fw fa-user-plus"></i>
+            </span>
+            <span class="text">Create a New User</span>
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">User Level</th>
+                        <th class="text-center">Role</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Remove</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">User Level</th>
+                        <th class="text-center">Role</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Remove</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr *ngFor="let i = index; let user of users$ | async" [class.active]="i == selectedRow">
+                        <td width="40%">
+                            {{ user.firstName }}
+                        </td>
+                        <td width="40%">
+                            {{ user.lastName }}
+                        </td>
+                        <td width="20%">
+                            {{ user.email }}
+                        </td>
+                        <td width="20%">
+                            {{ user.userLevel }}
+                        </td>
+                        <td width="20%">
+                            {{ user.role }}
+                        </td>
+                        <td class="text-center" width="10%">
+                            <button class="btn btn-primary" (click)="setClickedRow(user, i)">
+                                <i class="far fa-edit" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                        <td class="text-center" width="10%">
+                            <button class="btn btn-danger" (click)="deleteUser(user.id)">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                        <!--  -->
+                    </tr>
+                </tbody>
+            </table>
+            <app-new-user-modal 
+                [user]="selectedUser"
+                (onSaveChanges)='saveDetailsChanges($event)'
+                (onCancelChanges)='cancelDetailsChanges($event)'>
+            </app-new-user-modal>
+        </div>
+    </div>
+</div>
+
+
+
+

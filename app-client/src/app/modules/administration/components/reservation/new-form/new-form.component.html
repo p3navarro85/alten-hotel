@@ -1,0 +1,73 @@
+<div *ngIf="reservation">
+    <form id="reservationForm" class="needs-validation" novalidate="">
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="reservationRoom">Room</label>
+                    <app-drop-down-search 
+                        class="w-100"
+                        [inputElement]="reservation.roomId" 
+                        [searchField]="'number'"
+                        [items]="rooms" 
+                        (onSelectedItem)="onChangeRoom($event)"
+                        [required]="true">
+                    </app-drop-down-search>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="startedDate">Started Date</label>
+                    <input type="date" name="startedDate" max="3000-12-31" min="1000-01-01" class="form-control"
+                        (change)="startedDateChanged($event)"
+                        placeholder="" value="{{ reservation.startedDate | date:'yyyy-MM-dd' }}" required/>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="endDate">End Date</label>
+                    <input type="date" name="endDate" max="3000-12-31" min="1000-01-01" class="form-control"
+                        (change)="endDateChanged($event)"
+                        placeholder="" value="{{ reservation.endDate | date:'yyyy-MM-dd' }}" required/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="reservationState">Reservation State</label>
+                    <select class="form-control mx-2 w-50 float-right" [(ngModel)]="reservation.reservationState" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let s of reservationStates" [value]="s.key">{{s.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="numberOfPersons">Number Of Persons</label>
+                    <select class="form-control mx-2 w-50 float-right" [(ngModel)]="reservation.numberOfPersons" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let n of numberOfPersons" [value]="n">{{n}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="reservationOwner">Reservation Owner</label>
+                    <input type="text" name="reservationOwner"  class="form-control" 
+                        [(ngModel)]="reservation.ownerName" [ngModelOptions]="{standalone: true}"
+                        value="" required=""/>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3 mb-3">
+                <div class="form-inline">   
+                    <label class="mr-2" for="ownerEmail">Owner Email</label>
+                    <input type="text" name="ownerEmail" class="form-control"
+                        [(ngModel)]="reservation.ownerEmail" [ngModelOptions]="{standalone: true}"
+                        value="" required=""/>
+                </div>
+            </div>
+        </div>   
+    </form>
+</div>

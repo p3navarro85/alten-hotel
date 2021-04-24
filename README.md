@@ -1,0 +1,2 @@
+# alten-hotel
+Example App
